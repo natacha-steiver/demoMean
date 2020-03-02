@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Person Name</label>
+        <input type="text" class="form-control" formControlName="usr_fullname" #usr_fullname />
+      </div>
+      <div *ngIf="angForm.controls['usr_fullname'].invalid && (angForm.controls['usr_fullname'].dirty || angForm.controls['usr_fullname'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['usr_fullname'].errors.required">
+          Person Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">usr_email </label>
+        <input type="text" class="form-control" formControlName="usr_email" #usr_email />
+      </div>
+      <div *ngIf="angForm.controls['usr_email'].invalid && (angForm.controls['usr_email'].dirty || angForm.controls['usr_email'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['usr_email'].errors.required">
+          usr_email is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">usr_address </label>
+        <input type="text" class="form-control" formControlName="usr_address" #usr_address />
+      </div>
+      <div *ngIf="angForm.controls['usr_address'].invalid && (angForm.controls['usr_address'].dirty || angForm.controls['usr_address'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['usr_address'].errors.required">
+          Business GST Number is required.
+        </div>
+      </div>
+      <div class="form-group">
+          <button (click)="addUser(usr_fullname.value, usr_email.value, usr_address.value)"
+              [disabled]="angForm.pristine || angForm.invalid"
+              class="btn btn-primary">
+              Add Business
+           </button>
+      </div>
+    </form>
+  </div>
+</div>
